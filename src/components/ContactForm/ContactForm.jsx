@@ -1,7 +1,7 @@
 import { Form, Label, Input, Submit } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactSlice';
+import { addContact } from 'redux/contactsOperations';
 import { selectContacts } from 'redux/selectors';
 
 export default function ContactForm() {
@@ -15,7 +15,7 @@ export default function ContactForm() {
     const number = form.elements.number.value;
 
     const isDuplicate = contacts.some(
-      contact => contact.text.name.toLowerCase() === name.toLowerCase()
+      contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     if (isDuplicate) {
       alert(`${name} is already in contacts`);

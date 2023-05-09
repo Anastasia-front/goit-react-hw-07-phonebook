@@ -1,12 +1,12 @@
 import { Li, List, Delete } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectFilter } from 'redux/selectors';
-import { deleteContact } from 'redux/contactSlice';
+import { deleteContact } from 'redux/contactsOperations';
 
 const getVisibleTasks = (contacts, filter) => {
   const normilizedFilter = filter.toLowerCase();
   return contacts.filter(contact =>
-    contact.text['name'].toLowerCase().includes(normilizedFilter)
+    contact['name'].toLowerCase().includes(normilizedFilter)
   );
 };
 
@@ -18,10 +18,10 @@ const Items = () => {
   return (
     <List>
       {visibleTasks.length ? (
-        visibleTasks.map(({ id, text }) => (
+        visibleTasks.map(({ id, name, number }) => (
           <Li key={id}>
             <p>
-              {text.name}: {text.number}
+              {name}: {number}
               <Delete onClick={() => dispatch(deleteContact(id))}>
                 Delete
               </Delete>
