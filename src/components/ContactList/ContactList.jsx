@@ -29,7 +29,7 @@ const Items = () => {
           </Li>
         ))
       ) : (
-        <h3>There are no contacts in your book</h3>
+        <h3>There are no contacts in your phonebook</h3>
       )}
     </List>
   );
